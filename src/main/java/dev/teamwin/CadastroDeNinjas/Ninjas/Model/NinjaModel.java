@@ -23,8 +23,11 @@ public class NinjaModel {
     private Long id;
 
     private String nome;
+
+    @Column(unique = true)
     private String email;
     private int idade;
+
 
     // Relacionamento entre as tabelas, uma missao pode ter varios ninjas.
     @ManyToOne
