@@ -1,11 +1,21 @@
 package dev.teamwin.CadastroDeNinjas.Missoes.Controller;
 
 
+import dev.teamwin.CadastroDeNinjas.Missoes.Model.MissoesModel;
+import dev.teamwin.CadastroDeNinjas.Missoes.Service.MissaoService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping
+@RequestMapping("/missoes")
 public class MissaoController {
+
+    private MissaoService missaoService;
+
+    public MissaoController(MissaoService missaoService) {
+        this.missaoService = missaoService;
+    }
 
     // Criar Missão (CREATE)
     @PostMapping("/criarMissao")
@@ -15,8 +25,8 @@ public class MissaoController {
 
     // Mostrar todos as missões (READ)
     @GetMapping("/listarMissoes")
-    public String listarMissao() {
-        return "Lista de todas as missões";
+    public List<MissoesModel> listarMissao() {
+        return missaoService.listarMissoes();
     }
 
     // Listar a missão por id (READ)
