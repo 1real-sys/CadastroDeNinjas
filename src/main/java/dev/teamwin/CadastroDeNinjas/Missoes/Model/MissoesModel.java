@@ -1,5 +1,6 @@
 package dev.teamwin.CadastroDeNinjas.Missoes.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.teamwin.CadastroDeNinjas.Ninjas.Model.NinjaModel;
 import jakarta.persistence.*;
 import jakarta.persistence.Entity;
@@ -26,6 +27,7 @@ public class MissoesModel {
 
     // uma missãoe pode ter vários ninjas
     @OneToMany(mappedBy = "missoes")
+    @JsonIgnore
     private List<NinjaModel> ninjas;
 
 }
