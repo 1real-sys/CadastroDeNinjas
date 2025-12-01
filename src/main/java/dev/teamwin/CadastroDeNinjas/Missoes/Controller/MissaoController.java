@@ -30,9 +30,9 @@ public class MissaoController {
     }
 
     // Listar a missão por id (READ)
-    @GetMapping("/missaoPorId")
-    public String missaoPorId() {
-        return "Detalhes da Missão por ID";
+    @GetMapping("/missaoPorId/{id}")
+    public MissoesModel missaoPorId(@PathVariable Long id) {
+        return missaoService.listarPorId(id);
     }
     // Atualizar a missão por id (UPDATE)
     @PutMapping("/atualizarMissao")
