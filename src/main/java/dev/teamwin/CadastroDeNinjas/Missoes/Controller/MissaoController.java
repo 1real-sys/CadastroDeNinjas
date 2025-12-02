@@ -19,8 +19,8 @@ public class MissaoController {
 
     // Criar Missão (CREATE)
     @PostMapping("/criarMissao")
-    public String criarMissao() {
-        return "Missão criada com sucesso";
+    public MissoesModel criarMissao(@RequestBody MissoesModel missao) {
+        return missaoService.criarMissao(missao);
     }
 
     // Mostrar todos as missões (READ)

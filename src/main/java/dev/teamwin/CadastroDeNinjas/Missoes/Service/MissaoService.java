@@ -24,5 +24,11 @@ public class MissaoService {
     public MissoesModel listarPorId(Long id){
         Optional<MissoesModel> missaoPorId = missoesRepository.findById(id);
         return missaoPorId.orElse(null);
+
+    }
+
+    // Cria missao
+    public MissoesModel criarMissao(MissoesModel missao){
+        return missoesRepository.save(missao);
     }
 }
