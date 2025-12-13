@@ -1,4 +1,4 @@
-package dev.teamwin.CadastroDeNinjas.Ninjas;
+package dev.teamwin.CadastroDeNinjas.Ninjas.DTO;
 
 public class NinjaDTO {
 }
