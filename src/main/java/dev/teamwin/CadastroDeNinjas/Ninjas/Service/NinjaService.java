@@ -1,5 +1,7 @@
 package dev.teamwin.CadastroDeNinjas.Ninjas.Service;
 
+import dev.teamwin.CadastroDeNinjas.Ninjas.DTO.NinjaDTO;
+import dev.teamwin.CadastroDeNinjas.Ninjas.Mapper.NinjaMapper;
 import dev.teamwin.CadastroDeNinjas.Ninjas.Model.NinjaModel;
 import dev.teamwin.CadastroDeNinjas.Ninjas.Repository.NinjaRepository;
 import org.springframework.stereotype.Service;
@@ -13,11 +15,14 @@ public class NinjaService {
 
     private NinjaRepository ninjaRepository;
 
-    public NinjaService(NinjaRepository ninjaRepository) {
+    private NinjaMapper ninjaMapper;
+
+    public NinjaService(NinjaRepository ninjaRepository, NinjaMapper ninjaMapper) {
         this.ninjaRepository = ninjaRepository;
+        this.ninjaMapper = ninjaMapper;
     }
 
-    //Listar todos os meus ninjas
+    //Listar todos os meus ninjas=
     public List<NinjaModel> listarNinjas() {
        return ninjaRepository.findAll();
     }
@@ -31,8 +36,10 @@ public class NinjaService {
 
     // Criar Novo Ninja
 
-    public NinjaModel criarNinja(NinjaModel ninja){
-        return ninjaRepository.save(ninja);
+    public NinjaDTO criarNinja(NinjaDTO ninjaDTO){
+        NinjaModel ninjaModel = ninjaMapper.map(ninjaDTO);
+        ninjaModel = ninjaRepository.save(ninjaModel);
+        return ninjaMapper.map(ninjaModel);
     }
 
     // Deletar Ninja - Tem que ser um método Void
