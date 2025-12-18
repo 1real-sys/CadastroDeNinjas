@@ -26,18 +26,18 @@ public class MissaoController {
 
     // Mostrar todos as missões (READ)
     @GetMapping("/listarMissoes")
-    public List<MissoesModel> listarMissao() {
+    public List<MissaoDTO> listarMissao() {
         return missaoService.listarMissoes();
     }
 
     // Listar a missão por id (READ)
     @GetMapping("/missaoPorId/{id}")
-    public MissoesModel missaoPorId(@PathVariable Long id) {
+    public MissaoDTO missaoPorId(@PathVariable Long id) {
         return missaoService.listarPorId(id);
     }
     // Atualizar a missão por id (UPDATE)
     @PutMapping("/atualizarMissao/{id}")
-    public MissoesModel atualizarMissao(@PathVariable Long id, @RequestBody MissoesModel missaoAtualizada) {
+    public MissaoDTO atualizarMissao(@PathVariable Long id, @RequestBody MissaoDTO missaoAtualizada) {
         return missaoService.atualizarMissao(id,missaoAtualizada);
     }
 
