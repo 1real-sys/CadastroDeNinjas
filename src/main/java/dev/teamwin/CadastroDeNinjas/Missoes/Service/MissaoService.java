@@ -1,7 +1,10 @@
 package dev.teamwin.CadastroDeNinjas.Missoes.Service;
 
+import dev.teamwin.CadastroDeNinjas.Missoes.DTO.MissaoDTO;
+import dev.teamwin.CadastroDeNinjas.Missoes.Mapper.MissaoMapper;
 import dev.teamwin.CadastroDeNinjas.Missoes.Model.MissoesModel;
 import dev.teamwin.CadastroDeNinjas.Missoes.Repository.MissoesRepository;
+import dev.teamwin.CadastroDeNinjas.Ninjas.Repository.NinjaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,10 +13,15 @@ import java.util.Optional;
 @Service
 public class MissaoService {
 
+    private final NinjaRepository ninjaRepository;
     private MissoesRepository missoesRepository;
+    private MissaoMapper missaoMapper;
 
-    public MissaoService(MissoesRepository missoesRepository) {
+
+    public MissaoService(MissoesRepository missoesRepository, MissaoMapper missaoMapper, NinjaRepository ninjaRepository) {
         this.missoesRepository = missoesRepository;
+        this.missaoMapper = missaoMapper;
+        this.ninjaRepository = ninjaRepository;
     }
 
     // listar Missoes
@@ -28,8 +36,10 @@ public class MissaoService {
     }
 
     // Cria missao
-    public MissoesModel criarMissao(MissoesModel missao){
-        return missoesRepository.save(missao);
+    public MissaoDTO criarMissao(MissaoDTO missaoDTO){
+        MissoesModel missoesModel =  missaoMapper.map(missaoDTO);
+        missoesModel = missoesRepository.save(missoesModel);
+        return missaoMapper.map(missoesModel);
 
     }
     // Deletar Missao por id - função void
