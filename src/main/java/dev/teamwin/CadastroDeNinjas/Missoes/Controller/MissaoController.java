@@ -1,6 +1,7 @@
 package dev.teamwin.CadastroDeNinjas.Missoes.Controller;
 
 
+import dev.teamwin.CadastroDeNinjas.Missoes.DTO.MissaoDTO;
 import dev.teamwin.CadastroDeNinjas.Missoes.Model.MissoesModel;
 import dev.teamwin.CadastroDeNinjas.Missoes.Service.MissaoService;
 import org.springframework.web.bind.annotation.*;
@@ -19,24 +20,24 @@ public class MissaoController {
 
     // Criar Missão (CREATE)
     @PostMapping("/criarMissao")
-    public MissoesModel criarMissao(@RequestBody MissoesModel missao) {
-        return missaoService.criarMissao(missao);
+    public MissaoDTO criarMissao(@RequestBody MissaoDTO missaoDTO) {
+        return missaoService.criarMissao(missaoDTO);
     }
 
     // Mostrar todos as missões (READ)
     @GetMapping("/listarMissoes")
-    public List<MissoesModel> listarMissao() {
+    public List<MissaoDTO> listarMissao() {
         return missaoService.listarMissoes();
     }
 
     // Listar a missão por id (READ)
     @GetMapping("/missaoPorId/{id}")
-    public MissoesModel missaoPorId(@PathVariable Long id) {
+    public MissaoDTO missaoPorId(@PathVariable Long id) {
         return missaoService.listarPorId(id);
     }
     // Atualizar a missão por id (UPDATE)
     @PutMapping("/atualizarMissao/{id}")
-    public MissoesModel atualizarMissao(@PathVariable Long id, @RequestBody MissoesModel missaoAtualizada) {
+    public MissaoDTO atualizarMissao(@PathVariable Long id, @RequestBody MissaoDTO missaoAtualizada) {
         return missaoService.atualizarMissao(id,missaoAtualizada);
     }
 

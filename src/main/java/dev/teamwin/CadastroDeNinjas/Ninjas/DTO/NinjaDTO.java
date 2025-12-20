@@ -1,0 +1,20 @@
+package dev.teamwin.CadastroDeNinjas.Ninjas.DTO;
+
+import dev.teamwin.CadastroDeNinjas.Missoes.Model.MissoesModel;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class NinjaDTO {
+    private Long id;
+    private String nome;
+    private String email;
+    private int idade;
+    private String imgUrl;
+    private MissoesModel missoes;
+    private String ranking;
+}
